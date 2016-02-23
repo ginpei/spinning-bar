@@ -14,7 +14,7 @@ SpinningBar.prototype.start = function() {
 };
 
 SpinningBar.prototype.stop = function() {
-	this._output('\b \b');
+	this._output(' ');
 	clearTimeout(this._tm);
 };
 
@@ -24,13 +24,13 @@ SpinningBar.prototype._spin = function() {
 
 	var duration = 100;
 	this._tm = setTimeout(function() {
-		this._output('\b');
 		this._spin();
 	}.bind(this), duration);
 };
 
 SpinningBar.prototype._output = function(letter) {
 	process.stdout.write(letter);
+	process.stdout.write('\b');
 };
 
 SpinningBar.start = function() {
